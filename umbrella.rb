@@ -48,7 +48,7 @@ currently_hash = parsed_response_pirate.fetch("currently")
 
 current_temp = currently_hash.fetch("temperature")
 
-puts "The current temperature is " + current_temp.to_s + "."
+puts "The current temperature is " + current_temp.to_s + "ºF."
 
 current_summary = currently_hash.fetch("summary")
 
