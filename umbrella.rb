@@ -6,8 +6,26 @@ require "dotenv/load"
 pirate_weather_api_key = ENV.fetch("PIRATE_WEATHER_KEY")
 gmaps_api_key = ENV.fetch("GMAPS_KEY")
 
-# Assemble the full URL string by adding the first part, the API token, and the last part together
-pirate_weather_url = "https://api.pirateweather.net/forecast/" + pirate_weather_api_key + "/41.8887,-87.6355"
+# Google Maps Prompting user for a location
+
+
+location = ""
+
+# Using location input from user to generate a Google Maps URL to send as request
+
+gmaps_url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + location + "&key=" + GMAPS_KEY
+
+
+# Response Coordinates
+
+
+
+# Set Coordinates to variable
+
+coordinates = ""
+
+# Pirate Weather section
+pirate_weather_url = "https://api.pirateweather.net/forecast/" + pirate_weather_api_key + "/" + coordinates
 
 # Place a GET request to the URL
 raw_response = HTTP.get(pirate_weather_url)
