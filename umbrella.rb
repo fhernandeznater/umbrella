@@ -34,6 +34,8 @@ latitude = loc.fetch("lat")
 
 longitude = loc.fetch("lng")
 
+coordinates = latitude.to_s + "," + longitude.to_s
+
 # Pirate Weather section
 pirate_weather_url = "https://api.pirateweather.net/forecast/" + pirate_weather_api_key + "/" + coordinates
 
