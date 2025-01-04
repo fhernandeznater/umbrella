@@ -40,12 +40,16 @@ coordinates = latitude.to_s + "," + longitude.to_s
 pirate_weather_url = "https://api.pirateweather.net/forecast/" + pirate_weather_api_key + "/" + coordinates
 
 # Place a GET request to the URL
-raw_response = HTTP.get(pirate_weather_url)
+raw_response_pirate = HTTP.get(pirate_weather_url)
 
-parsed_response = JSON.parse(raw_response)
+parsed_response_pirate = JSON.parse(raw_response_pirate)
 
-currently_hash = parsed_response.fetch("currently")
+currently_hash = parsed_response_pirate.fetch("currently")
 
 current_temp = currently_hash.fetch("temperature")
 
 puts "The current temperature is " + current_temp.to_s + "."
+
+current_summary = currently_hash.fetch("summary")
+
+puts "The weather is" + current_summary + "."
