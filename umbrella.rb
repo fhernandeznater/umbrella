@@ -7,22 +7,22 @@ pirate_weather_api_key = ENV.fetch("PIRATE_WEATHER_KEY")
 gmaps_api_key = ENV.fetch("GMAPS_KEY")
 
 # Google Maps Prompting user for a location
+puts "Where are you?"
 
-
-location = ""
+location = gets.chomp
 
 # Using location input from user to generate a Google Maps URL to send as request
 
-gmaps_url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + location + "&key=" + GMAPS_KEY
+gmaps_url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + location + "&key=" + gmaps_api_key
 
 
-# Response Coordinates
+# Response Coordinates, set coordinates to variable
 
+response = HTTP.get(gmaps_url)
 
+raw_response = response.to_s
 
-# Set Coordinates to variable
-
-coordinates = ""
+parsed_response = JSON.parse(raw_response)
 
 # Pirate Weather section
 pirate_weather_url = "https://api.pirateweather.net/forecast/" + pirate_weather_api_key + "/" + coordinates
